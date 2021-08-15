@@ -1,0 +1,86 @@
+if(c==Sand.ICE){
+                    //System.out.println("Sand go stonks"+"Y+ "+y+"X+ "+x);
+                    e[x][y]=Sand.ICE;//LAVA;//WATER;RIP two / and a w and a o
+                    if(up!=Sand.ICE&&up!=Sand.WALL&&up!=Sand.NOTHING){//WATER is ripped of 4 times i think
+                        e[x][y]=Sand.STONE;//And = too
+                        e[x][y]=Sand.NOTHING;
+                    }
+                    else if(below!=Sand.ICE&&below!=Sand.WALL&&below!=Sand.NOTHING){
+                        e[x][y+1]=Sand.NOTHING;//STONE;
+                        n[x][y+1]=Sand.NOTHING;
+                        e[x][y]=Sand.NOTHING;
+                    }
+                    else if(l!=Sand.ICE&&l!=Sand.WALL&&l!=Sand.NOTHING){
+                        e[x-1][y]=Sand.NOTHING;//STONE;
+                        e[x][y]=Sand.NOTHING;
+                    }
+                    else if(r!=Sand.ICE&&r!=Sand.WALL&&r!=Sand.NOTHING){//Rip 2 or three =
+                        e[x+1][y]=Sand.NOTHING;//STONE;
+                        n[x+1][y]=Sand.NOTHING;//rip the e
+                        e[x][y]=Sand.NOTHING;
+                    }
+                    else if(below==Sand.NOTHING){
+                        e[x][y]=Sand.NOTHING;
+                        e[x][y+1]=Sand.ICE;//LAVA;//WATER;
+                    }
+                    else if(b1==Sand.NOTHING){//&&below!=Sand.NOTHING
+                        e[x][y]=Sand.NOTHING;
+                        e[x+1][y+1]=Sand.ICE;//a//LAVA;//WATER;
+                    }
+                    else if(b2==Sand.NOTHING){//&&below!=Sand.NOTHING
+
+                        e[x][y]=Sand.NOTHING;
+                        e[x-1][y+1]=Sand.ICE;//LAVA;//WATER;//+
+                    }
+                    //else if(b1==Sand.SAND){
+                    //    e[x][y]=Sand.SAND;
+                    //    e[x+1][y+1]=Sand.WATER;
+                    //}
+                    // else if(b2==Sand.SAND){//1
+                    //     e[x][y]=Sand.SAND;
+                    //     e[x-1][y+1]=Sand.WATER;//+
+                    //}
+                    else {
+                        /*if((float)(new Date().toInstant().getEpochSecond()*1-START)/2==Math.floor((new Date().toInstant().getEpochSecond()*1-START)/2)) {//new Date()OINK
+                            if (l == Sand.NOTHING) {
+                                e[x][y] = Sand.NOTHING;
+                                e[x - 1][y] = Sand.WATER;//We like ]
+                            } else if (r == Sand.NOTHING) {
+                                e[x][y] = Sand.NOTHING;
+                                e[x + 1][y] = Sand.WATER;
+                            }
+                        }
+                        else{
+                            if (r == Sand.NOTHING) {
+                                e[x][y] = Sand.NOTHING;
+                                e[x + 1][y] = Sand.WATER;
+                            }
+                            else if (l == Sand.NOTHING) {
+                                e[x][y] = Sand.NOTHING;
+                                e[x - 1][y] = Sand.WATER;//We like ]
+                            }
+                        }*/
+                        if(Math.random()>0.4&&l==Sand.NOTHING){
+                            e[x][y]=Sand.NOTHING;
+                            e[x-1][y]=Sand.ICE;//LAVA;//WATER;
+                        }
+                        else{
+                            if(r==Sand.NOTHING){
+                                e[x][y]=Sand.NOTHING;
+                                e[x+1][y]=Sand.ICE;//LAVA;//WATER;//+
+                            }
+                        }
+
+                    }
+                    /*else{
+                    if(b1==Sand.NOTHING){
+                       e[x][y]=Sand.NOTHING;
+                        e[x+1][y+1]=Sand.SAND;
+                    }
+                    else{ if(b2==Sand.NOTHING){
+                        e[x][y]=Sand.NOTHING;
+                        e[x-1][y+1]=Sand.SAND;//+
+                    }
+                    }
+                    }*/
+                }
