@@ -45,11 +45,12 @@ public class Board extends JPanel implements ActionListener{
     private int[][] e;
     private int PlayerSand=Sand.SAND;
     private int PlayerSandWich=1;//0;
-    public static String credits= "A SandBox Made By KetuFaisPikinut      (github.com/KeTuFaisPiKiNut)";// The n come from some AN on the beginning of the string that i removed latter
+    private int language = 0;
+    public static String credits= "A SandBox Made By KetuFaisPikinut & Astroide (github.com/KeTuFaisPiKiNut) (github.com/Astroide)";// The n come from some AN on the beginning of the string that i removed latter
     private int PlayerScale=0;
     private long dtT=new Date().getTime();//je-
     private float TEMP=1;//  \/ static //int
-    private String HELP= """
+    private String[] HELP= {"""
             HELP FOR THOSE WHO GOT NO IDEA WHAT THIS IS\n
             
             This is a game about sand and diverse other things that\n
@@ -58,17 +59,35 @@ public class Board extends JPanel implements ActionListener{
             \n
              - Left/Right Arrow: Change Pencil Size\n
              - Up/Down Arrow: Change Sand Selection\n
-             - Move Mouse: Movez Pencil\n
+             - Move Mouse: Move Pencil\n
              - Use Mouse: Use Pencil\n
              - R: Reset
             Also the topmost element in the sand selection pannel (the left collumn)\n
             is an eraser. You can see what you are pointing at the bottom left . \n
             At the bottom right there is two integers, the left one is your pencil size\n
             and the right one is the temperature of the map.\n
+            Press E to set the language to English and F to set it to French.
             -KTFPKN
+            """, """
+            AIDE DE CE MACHIN TRUC\n
             
-           
-            """;//right
+            Ceci est un jeu qui contient (entres autres) du sable.\n
+            Contrôles : \n
+            \n
+             - Flèche gauche / flèche droite: Changer la taille du crayon\n
+             - Flèche haut / flèche bas: Changer l'élément que le crayon place\n
+             - Déplacer la souris: déplacer le crayon\n
+             - Cliquer / garder appuyé: placer un élément\n
+             - R: Réinitialiser\n
+            L'élément 'rien' est une efface. Dans le coin en bas à droite,\n
+            un texte indique\n
+            le nom de l'élément que vous pointez.\n
+            Il y a aussi deux nombres. Celui de gauche est la taille du crayon\n
+            et celui de droite la température.\n
+            Appuyer sur E pour mettre le langage à 'Anglais' et\n
+            sur F pour français.\n
+            -Astroide\n
+            """};//right
     public Board() {// P.S.: Have Fun Guessing What The Elements Are
 
         initBoard();
@@ -216,7 +235,7 @@ public class Board extends JPanel implements ActionListener{
                 }
                 //BLACK//WHITE
                 g.setColor(Color.BLACK);//400+8+10+50-10//25-20+(i-10)*(20+10)+20-5-10
-                g.drawString(Sand.NAMES[Sand.INVENTORY[i]+1],400 + 10+50,25 - 20 + (i-10) * (20 + 10)+10);
+                g.drawString(Sand.NAMES[language][Sand.INVENTORY[i]+1],400 + 10+50,25 - 20 + (i-10) * (20 + 10)+10);
             }
             else {
                 g.fillRect(400 + 10, 25 - 20 + i * (20 + 10), 40, 20);//I had forgotten that ;90
@@ -225,7 +244,7 @@ public class Board extends JPanel implements ActionListener{
 
                 }//BLACK//WHITE
                 g.setColor(Color.BLACK);
-                g.drawString(Sand.NAMES[Sand.INVENTORY[i]+1],400 + 10,25 - 20 + i * (20 + 10)+10);
+                g.drawString(Sand.NAMES[language][Sand.INVENTORY[i]+1],400 + 10,25 - 20 + i * (20 + 10)+10);
             }
 
                 //Rip part of Sand.Inventory...
@@ -322,12 +341,12 @@ public class Board extends JPanel implements ActionListener{
 
         //g.setColor(Color.WHITE);
         g.setColor(Color.YELLOW);
-        g.drawString("HELP",0+20+450+40-5,0+20-10);
+        g.drawString(language == 0 ? "HELP" : "AIDE",0+20+450+40-5,0+20-10);
         if(MouseX>0+20+450+40-5&&MouseY<0+20-10){
             g.setColor(Color.GRAY);
             g.fillRect(0, 0,400,300);
             g.setColor(Color.BLACK);
-            String[] help=HELP.split("\n");
+            String[] help=HELP[language].split("\n");
             for(int i=0;i<help.length;i++){
                 g.drawString(help[i],0+10,10+10*i);//p);00+10//200HELP
             }
@@ -335,7 +354,7 @@ public class Board extends JPanel implements ActionListener{
         }
         //drawStrij
         g.setColor(Color.WHITE);
-        g.drawString(Sand.NAMES[getAtPos(MouseX,MouseY,n)+1],20+360+40-10+20+10+5-10-30,300-20+50-20+20);
+        g.drawString(Sand.NAMES[language][getAtPos(MouseX,MouseY,n)+1],20+360+40-10+20+10+5-10-30,300-20+50-20+20);
         g.drawString("UT: "+TimeD,20+400-10+20+10+5+20,300-20+50-20+10+10);//Dtt//20+360+40-10+20+10+5-10-30+40,300-20+50-20+20//40//dtT//0,20//FPS
         dtT=new Date().getTime();
     }
@@ -1726,8 +1745,15 @@ public class Board extends JPanel implements ActionListener{
                 PlayerSandWich=Sand.INVENTORY.length-1;
             }
             PlayerSand=Sand.INVENTORY[PlayerSandWich];//Rip SNA
-            if(e.getKeyCode()==KeyEvent.VK_LEFT)PlayerScale--;//Pl)
+            if(e.getKeyCode()==KeyEvent.VK_LEFT) {
+                PlayerScale--;
+                PlayerScale = Math.max(1, PlayerScale);
+            }
             if(e.getKeyCode()==KeyEvent.VK_RIGHT)PlayerScale++;
+            if (e.getKeyCode() == KeyEvent.VK_F)
+                language = 1;
+            else if (e.getKeyCode() == KeyEvent.VK_E)
+                language = 0;
 
             //e
         }
