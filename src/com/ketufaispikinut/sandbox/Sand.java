@@ -23,10 +23,11 @@ public class Sand {
     public static int CLONER=16;
     public static int ANTIWATER=17;
     public static int MUD=18;
+    public static int TNT=19;//GUNPOWDER
 
     //public s t
     //,RANDOM//*
-    public static int[] INVENTORY={NOTHING,SAND,WALL,WATER,STONE,LAVA,ACID,ICE,FIRE,WOOD,MIST,DIRT,LEAF,OIL,SNOW,ANTISAND,CLONER,ANTIWATER,MUD};//LEAF//P//aNTIS
+    public static int[] INVENTORY={NOTHING,SAND,WALL,WATER,STONE,LAVA,ACID,ICE,FIRE,WOOD,MIST,DIRT,LEAF,OIL,SNOW,ANTISAND,CLONER,ANTIWATER,MUD,TNT};//LEAF//P//aNTIS//GUNPOWDER
     public static Color[] COLORS={Color.lightGray,Color.WHITE,Color.YELLOW,
     Color.BLUE,
     Color.GRAY,
@@ -46,11 +47,11 @@ public class Sand {
             ,new Color(180,50,20)//=//0//255//255
             ,new Color(220,40+10+20,40)//;
             ,new Color(0x5b2904)//;//""
-            ,new Color(0x000000)//l;
+            ,new Color(0xFDBBBB)//l;
             }; //
     //pib
     public static String[] NAMES={//s//"
-            "Wall","Nothing","Sand","Water","Stone","Lava","Wet Sand","Acid","Ice","Fire","Wood","Leaf","Mist","Dirt","Oil","Snow","Anti-S","Cloner","Anti-W","Mud",""//o//-S//sand
+            "Wall","Nothing","Sand","Water","Stone","Lava","Wet Sand","Acid","Ice","Fire","Wood","Leaf","Mist","Dirt","Oil","Snow","Anti-S","Cloner","Anti-W","Mud","TNT",""//o//-S//sand
     };
 }
 

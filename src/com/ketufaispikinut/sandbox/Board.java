@@ -58,7 +58,7 @@ public class Board extends JPanel implements ActionListener{
             \n
              - Left/Right Arrow: Change Pencil Size\n
              - Up/Down Arrow: Change Sand Selection\n
-             - Move Mouse: Move Pencil\n
+             - Move Mouse: Movez Pencil\n
              - Use Mouse: Use Pencil\n
              - R: Reset
             Also the topmost element in the sand selection pannel (the left collumn)\n
@@ -75,6 +75,19 @@ public class Board extends JPanel implements ActionListener{
 
     }
     //static
+    public void explode(int x, int y,int radius/*,int Strength*/){//*,int bonk
+        e[x][y] = Sand.NOTHING;
+        for(int tx = x - radius; tx < x + radius + 1; tx++) {
+            for(int ty = y - radius; ty < y + radius + 1; ty++)
+                if(getAtPos(tx,ty,e)!=Sand.WALL && Math.sqrt(Math.pow(x - tx, 2) + Math.pow(y - ty, 2)) <= radius) {
+                    if(Math.random()>0.8)e[tx][ty] =Sand.FIRE;// Sand.NOTHING;//&&
+                    else{e[tx][ty]=Sand.NOTHING;}
+                    n[tx][ty] =Sand.NOTHING;//Sand.FIRE;// Sand.NOTHING;
+
+                }
+        }
+
+    }
     public void initBoard() {
 
         addKeyListener(new TAdapter());
@@ -1606,6 +1619,64 @@ public class Board extends JPanel implements ActionListener{
                         }
 
                     }
+                    /*else{
+                    if(b1==Sand.NOTHING){
+                       e[x][y]=Sand.NOTHING;
+                        e[x+1][y+1]=Sand.SAND;
+                    }
+                    else{ if(b2==Sand.NOTHING){
+                        e[x][y]=Sand.NOTHING;
+                        e[x-1][y+1]=Sand.SAND;//+
+                    }
+                    }
+                    }*/
+                }
+                if(c==Sand.TNT){//SAND
+                    //System.out.println("Sand go stonks"+"Y+ "+y+"X+ "+x);
+                    e[x][y]=Sand.TNT;//Sand.SAND;
+                    if(up==Sand.FIRE){
+                    //    e[x][y]=c;//Sand.WETSAND;//STONE;
+                        explode(x, y, 15);
+                    }
+                    else if(below==Sand.FIRE){
+                    //    e[x][y]=c;//Sand.WETSAND;//STONE;
+                        explode(x, y, 15);
+                    }
+                    else if(l==Sand.FIRE){
+                    //    e[x][y]=Sand.WETSAND;////STONE;
+                        explode(x, y, 15);
+                    }
+                    else if(r==Sand.FIRE){//Rip 2 or three =
+                    //    e[x][y]=Sand.WETSAND;//STONE;
+                        explode(x, y, 15);
+                    }
+                    //else
+                    else if(below==Sand.NOTHING){
+                        e[x][y]=Sand.NOTHING;
+                        e[x][y+1]=c;//Sand.SAND;
+                    }
+                    //else if(below==Sand.WATER){
+                    //    e[x][y]=Sand.WATER;
+                    //    e[x][y+1]=Sand.SAND;
+                    //}
+                    else if(b1==Sand.NOTHING&&below!=Sand.NOTHING){
+                        e[x][y]=Sand.NOTHING;
+                        e[x+1][y+1]=c;//Sand.SAND;
+                    }
+                    //else if(b1==Sand.WATER&&below!=Sand.SAND){
+                    //    e[x][y]=Sand.WATER;
+                    //    e[x+1][y+1]=Sand.SAND;
+                    //}
+                    else if(b2==Sand.NOTHING&&below!=Sand.NOTHING){
+
+                        e[x][y]=Sand.NOTHING;
+                        e[x-1][y+1]=c;//Sand.SAND;//+
+                    }
+                    //else if(b2==Sand.WATER&&below!=Sand.SAND){
+                    //
+                    //    e[x][y]=Sand.WATER;
+                    //    e[x-1][y+1]=Sand.SAND;//+
+                    //}
                     /*else{
                     if(b1==Sand.NOTHING){
                        e[x][y]=Sand.NOTHING;
