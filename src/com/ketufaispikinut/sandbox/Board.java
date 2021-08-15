@@ -1711,7 +1711,7 @@ public class Board extends JPanel implements ActionListener{
             PlayerSand=Sand.INVENTORY[PlayerSandWich];//Rip SNA
             if(e.getKeyCode()==KeyEvent.VK_LEFT) {
                 PlayerScale--;
-                PlayerScale = Math.max(1, PlayerScale);
+                PlayerScale = Math.max(-2, PlayerScale);
             }
             if(e.getKeyCode()==KeyEvent.VK_RIGHT)PlayerScale++;
             if (e.getKeyCode() == KeyEvent.VK_F)
