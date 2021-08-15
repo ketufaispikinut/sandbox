@@ -18,14 +18,6 @@ import javax.swing.Timer;
 public class Board extends JPanel implements ActionListener{
 
     private Timer timer;
-    //private Eye eye;
-    //private List<Mouth> Mouths;
-    //private List<Teeth> Teeths;
-    //private List<Nose> Noses;
-    //private List<Ant> Ants;
-    //private List<Food> Foods;
-    //private List<Wall> Walls;
-    //private Controler CTRL;
     //private boolean ingame;
     //private final String wcause = "You won!";
     //private final String lcause = "You lost";
@@ -116,14 +108,7 @@ public class Board extends JPanel implements ActionListener{
 
         setPreferredSize(new Dimension(B_WIDTH, B_HEIGHT));
 
-        // eye = new Eye(ICRAFT_X, ICRAFT_Y);
-        //CTRL=new Controler(500, 350);
         init();
-        //initFoods();
-        //initWalls();
-        //pinitMouths();
-        ///initTeeths();
-        //initNoses();
         PML=new PosMouseListener(this);
         addMouseListener(PML);
         timer = new Timer(DELAY, this);
@@ -132,15 +117,6 @@ public class Board extends JPanel implements ActionListener{
 
 
     public void init(){//AntsAntsAntsAntsAnts
-       // Ants=new ArrayList<>();
-        //Ants.add(new Ant(200,200));//Da first one
-        //Ants.add(new Ant(200,200));
-        //Da copied ones
-        //Ants.add(new Ant(200,200));
-     //   for(int i=0;i<50;i++){//here was once  2
-     //       System.out.println(i);
-     //       Ants.add(new Ant(500,350));
-     //   }
         //n[100][0]=Sand.SAND;
        // SimplexNoise N=new SimplexNoise(1,(double)3,(int)Math.random()*123123);//new Date().toInstant().getNano()
         //for(int i=0;i<n.length;i++){
@@ -352,7 +328,6 @@ public class Board extends JPanel implements ActionListener{
             }
 
         }
-        //drawStrij
         g.setColor(Color.WHITE);
         g.drawString(Sand.NAMES[language][getAtPos(MouseX,MouseY,n)+1],20+360+40-10+20+10+5-10-30,300-20+50-20+20);
         g.drawString("UT: "+TimeD,20+400-10+20+10+5+20,300-20+50-20+10+10);//Dtt//20+360+40-10+20+10+5-10-30+40,300-20+50-20+20//40//dtT//0,20//FPS
@@ -365,19 +340,8 @@ public class Board extends JPanel implements ActionListener{
         inGame();
 
         updateControls();//                                                                                      ();
-        //updateAnts();
         update();
         //Consommation & Autres
-        //FOOD-=((double)(Ants.size())/50)/20;
-        /*if(FOOD>=100&&Ants.size()<=200){
-            //Ants.add(new Ant(500, 350));
-        }
-        if(FOOD<=-10){
-            //Ants.remove((int)Math.floor(Math.random()*Ants.size()));
-        }
-        CTRL.move();
-        //checkCollisions();
-        */
         repaint();
     }
 
