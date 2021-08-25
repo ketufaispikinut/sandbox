@@ -12,7 +12,15 @@ public class PosMouseListener implements MouseListener {
     }
     @Override
     public void mouseClicked(MouseEvent e) {
-
+        int x = e.getPoint().x;
+        int y = e.getPoint().y;
+        if (x >= 820 && x < 950 && y >= 10 && y < 590) {
+            x -= 820;
+            x /= 65;
+            y /= 58;
+            board.PlayerSandWich = x * 10 + y;
+            board.PlayerSand = Sand.INVENTORY[board.PlayerSandWich];
+        }
     }
 
     @Override

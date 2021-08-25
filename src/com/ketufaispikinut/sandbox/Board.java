@@ -39,8 +39,8 @@ public class Board extends JPanel implements ActionListener {
     public int MouseX = 0;
     public int MouseY = 0;
     private int[][] e;
-    private int PlayerSand = Sand.SAND;
-    private int PlayerSandWich = 1;//0;
+    public int PlayerSand = Sand.SAND;
+    public int PlayerSandWich = 1;//0;
     private int language = 0;
 //    public static String credits = "A SandBox Made By KetuFaisPikinut & Astroide (github.com/KeTuFaisPiKiNut) (github.com/Astroide)";// The n come from some AN on the beginning of the string that i removed latter
     public static String credits = "";
@@ -48,44 +48,7 @@ public class Board extends JPanel implements ActionListener {
     private long dtT = new Date().getTime();//je-
     private float TEMP = 1;//  \/ static //int
     private Font font = null;
-    private String[] HELP = {"""
-            HELP FOR THOSE WHO GOT NO IDEA WHAT THIS IS\n
-            
-            This is a game about sand and diverse other things that\n
-             make no sense.\n
-            Here are the controls;\n
-            \n
-             - Left/Right Arrow: Change Pencil Size\n
-             - Up/Down Arrow: Change Sand Selection\n
-             - Move Mouse: Move Pencil\n
-             - Use Mouse: Use Pencil\n
-             - R: Reset
-            Also the topmost element in the sand selection pannel (the left collumn)\n
-            is an eraser. You can see what you are pointing at the bottom left . \n
-            At the bottom right there is two integers, the left one is your pencil size\n
-            and the right one is the temperature of the map.\n
-            Press E to set the language to English and F to set it to French.
-            -KTFPKN
-            """, """
-            AIDE DE CE MACHIN TRUC\n
-            
-            Ceci est un jeu qui contient (entres autres) du sable.\n
-            Contrôles : \n
-            \n
-             - Flèche gauche / flèche droite: Changer la taille du crayon\n
-             - Flèche haut / flèche bas: Changer l'élément que le crayon place\n
-             - Déplacer la souris: déplacer le crayon\n
-             - Cliquer / garder appuyé: placer un élément\n
-             - R: Réinitialiser\n
-            L'élément 'rien' est une efface. Dans le coin en bas à droite,\n
-            un texte indique\n
-            le nom de l'élément que vous pointez.\n
-            Il y a aussi deux nombres. Celui de gauche est la taille du crayon\n
-            et celui de droite la température.\n
-            Appuyer sur E pour mettre le langage à 'Anglais' et\n
-            sur F pour français.\n
-            -Astroide\n
-            """};//right
+    private String[] HELP = {"HELP FOR THOSE WHO GOT NO IDEA WHAT THIS IS\nThis is a game about sand and diverse other things that\n make no sense.\nHere are the controls;\n\n - Left/Right Arrow: Change Pencil Size\n - Up/Down Arrow: Change Sand Selection\n - Move Mouse: Move Pencil\n - Use Mouse: Use Pencil\n - R: ResetAlso the topmost element in the sand selection pannel (the left collumn)\nis an eraser. You can see what you are pointing at the bottom left . \nAt the bottom right there is two integers, the left one is your pencil size\nand the right one is the temperature of the map.\nPress E to set the language to English and F to set it to French.-KTFPKN, AIDE DE CE MACHIN TRUC\nCeci est un jeu qui contient (entres autres) du sable.\nContrôles : \n\n - Flèche gauche / flèche droite: Changer la taille du crayon\n - Flèche haut / flèche bas: Changer l'élément que le crayon place\n - Déplacer la souris: déplacer le crayon\n - Cliquer / garder appuyé: placer un élément\n - R: Réinitialiser\nL'élément 'rien' est une efface. Dans le coin en bas à droite,\nun texte indique\nle nom de l'élément que vous pointez.\nIl y a aussi deux nombres. Celui de gauche est la taille du crayon\net celui de droite la température.\nAppuyer sur E pour mettre le langage à 'Anglais' et\nsur F pour français.\n -Astroide\n "};//right
 
     public Board() {// P.S.: Have Fun Guessing What The Elements Are
 
